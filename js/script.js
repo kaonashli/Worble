@@ -265,12 +265,12 @@ function shareResult() {
     const score = state.won ? `${state.guesses.length}/${state.maxGuesses}` : `X/${state.maxGuesses}`;
     const url = window.location.href;
     const text = `${state.puzzleName}\n${score}\n\n${grid}\n\n${url}`;
-    if (navigator.share) {
-        navigator.share({ text }).catch(() => copyToClipboard(text));
-    } else {
+    // if (navigator.share) {
+    //     navigator.share({ text }).catch(() => copyToClipboard(text));
+    // } else {
         copyToClipboard(text);
         showToast('Result copied to clipboard!');
-    }
+    // }
 }
 
 function copyToClipboard(text) {
