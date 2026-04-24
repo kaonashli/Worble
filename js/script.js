@@ -11,16 +11,25 @@ let state = {
     keyColors: {}
 };
 
+// function encode(str) {
+//     return btoa(str.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ (13 + i % 7))).join(''));
+// }
+// function decode(str) {
+//     try {
+//         const raw = atob(str);
+//         return raw.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ (13 + i % 7))).join('');
+//     } catch { return null; }
+// }
 function encode(str) {
-    return btoa(str.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ (13 + i % 7))).join(''));
+    return btoa(str.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ (13 + i % 7))).join('')).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 }
 function decode(str) {
     try {
-        const raw = atob(str);
+        const padded = str + '==='.slice((str.length + 3) % 4);
+        const raw = atob(padded.replace(/-/g, '+').replace(/_/g, '/'));
         return raw.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ (13 + i % 7))).join('');
     } catch { return null; }
 }
-
 function init() {
     const hash = window.location.hash.slice(1);
     if (hash) {
@@ -268,8 +277,8 @@ function shareResult() {
     // if (navigator.share) {
     //     navigator.share({ text }).catch(() => copyToClipboard(text));
     // } else {
-        copyToClipboard(text);
-        showToast('Result copied to clipboard!');
+    copyToClipboard(text);
+    showToast('Result copied to clipboard!');
     // }
 }
 
