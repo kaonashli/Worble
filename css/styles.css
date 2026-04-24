@@ -550,6 +550,7 @@ header {
     margin: 1rem auto;
     display: inline-block;
     letter-spacing: 0.05em;
+    width: 160px;
 }
 
 .stats-row {
