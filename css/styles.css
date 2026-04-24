@@ -1,5 +1,6 @@
 :root {
-    --bg: #0f0f0f;
+    /* Original palette */
+    /* --bg: #0f0f0f;
     --surface: #1a1a1a;
     --surface2: #242424;
     --border: #333;
@@ -10,7 +11,48 @@
     --present: #e8a030;
     --absent: #444;
     --correct-text: #0f2a1e;
-    --present-text: #2a1800;
+    --present-text: #2a1800; */
+    /* second palette */
+    /* --bg: #0e1118;
+    --surface: #151a24;
+    --surface2: #1c2230;
+    --border: #2c3848;
+    --text: #d8dfe8;
+    --muted: #7088a0;
+    --accent: #8ab4d4;
+    --correct: #58b898;
+    --present: #d4a050;
+    --absent: #2c3848;
+    --correct-text: #021a10;
+    --present-text: #201000; */
+    /* third pallete */
+    /* --bg: #080f18;
+    --surface: #0d1824;
+    --surface2: #122030;
+    --border: #1c3858;
+    --text: #c8dff5;
+    --muted: #4a7aaa;
+    --accent: #38b8e8;
+    --correct: #09b814;
+    --present: #f0a838;
+    --absent: #1c3858;
+    --correct-text: #0f2a1e;
+    --present-text: #201400; */
+
+    /* fourth palette */
+    --bg: #080f18;
+    --surface: #0d1824;
+    --surface2: #122030;
+    --border: #1c3858;
+    --text: #c8dff5;
+    --muted: #4a7aaa;
+    --accent: #38b8e8;
+    --correct: #00e05a;
+    --present: #ffe620;
+    --absent: #1c3858;
+    --correct-text: #001a0d;
+    --present-text: #1f1c00;
+
     --tile-size: clamp(48px, 10vw, 62px);
     --gap: clamp(4px, 1vw, 6px);
 }

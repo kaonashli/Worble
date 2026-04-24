@@ -36,7 +36,7 @@ function init() {
             }
         }
     }
-    document.getElementById('puzzle-name-display').textContent = 'Create a puzzle';
+    document.getElementById('puzzle-name-display').textContent = 'Worble';
     setupCreatorListeners();
 }
 
