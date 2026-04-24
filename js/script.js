@@ -30,7 +30,7 @@ function decode(str) {
         return raw.split('').map((c, i) => String.fromCharCode(c.charCodeAt(0) ^ (13 + i % 7))).join('');
     } catch { return null; }
 }
-function init() {
+function checkHash() {
     const hash = window.location.hash.slice(1);
     if (hash) {
         const parts = hash.split('|');
@@ -41,12 +41,27 @@ function init() {
                 state.word = word.toUpperCase();
                 state.puzzleName = name || 'Wordle Challenge';
                 showGameView();
-                return;
+                return true;
             }
         }
     }
-    document.getElementById('puzzle-name-display').textContent = 'Worble';
-    setupCreatorListeners();
+    return false;
+}
+
+function init() {
+    if (!checkHash()) {
+        document.getElementById('puzzle-name-display').textContent = 'Worble';
+        setupCreatorListeners();
+    }
+    window.addEventListener('hashchange', () => {
+        if (checkHash()) {
+            state.gameOver = false;
+            state.won = false;
+            state.currentGuess = [];
+            state.guesses = [];
+            state.keyColors = {};
+        }
+    });
 }
 
 function setupCreatorListeners() {
