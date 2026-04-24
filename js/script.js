@@ -304,4 +304,14 @@ function showToast(msg) {
     setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+// function type() {
+//     $("#typing-title").append(page_title.substring(0, 1));
+//     page_title = page_title.substr(1);
+//     if (page_title.length === 0) {
+//         clearInterval(typingInterval);
+//     }
+// }
+// let typingInterval = setInterval(type, 100);
+    
+
 init();

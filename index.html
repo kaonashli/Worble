@@ -1,68 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wordle Share</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordle Share</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<header>
-  <div class="logo">Like Wordle, but you get to choose the word.</div>
-  <div class="puzzle-name" id="puzzle-name-display"></div>
-</header>
+  <header>
+    <div class="logo">Like Wordle, but you get to choose the word.</div>
+    <div class="puzzle-name" id="puzzle-name-display"></div>
+  </header>
 
-<!-- CREATOR VIEW -->
-<div class="view active" id="view-creator">
-  <div class="creator-card">
-    <h2>Create a Wordle puzzle</h2>
-    <div class="field">
-      <label>Puzzle name</label>
-      <input type="text" id="puzzle-name-input" placeholder="e.g. Bob's word of the day" maxlength="50">
-      <div class="field-hint">This is what your friends will see when they open the link</div>
+  <!-- CREATOR VIEW -->
+  <div class="view active" id="view-creator">
+    <div class="creator-card">
+      <h2>Create a Wordle puzzle</h2>
+      <div class="field">
+        <label>Puzzle name</label>
+        <input type="text" id="puzzle-name-input" placeholder="e.g. Bob's word of the day" maxlength="50">
+        <div class="field-hint">This is what your friends will see when they open the link</div>
+      </div>
+      <div class="field">
+        <label>Your secret word</label>
+        <input type="text" id="word-input" class="word-input" placeholder="5 letters" maxlength="5" autocomplete="off"
+          autocorrect="off" spellcheck="false">
+        <div class="field-hint">Must be exactly 5 letters — friends will try to guess this</div>
+      </div>
+      <button class="btn-primary" id="btn-create" onclick="createPuzzle()" disabled>Generate link</button>
     </div>
-    <div class="field">
-      <label>Your secret word</label>
-      <input type="text" id="word-input" class="word-input" placeholder="5 letters" maxlength="5" autocomplete="off" autocorrect="off" spellcheck="false">
-      <div class="field-hint">Must be exactly 5 letters — friends will try to guess this</div>
+
+    <div class="share-box" id="share-box">
+      <h3>Your shareable link</h3>
+      <div class="link-row">
+        <div class="link-display" id="share-link-display"></div>
+        <button class="btn-copy" onclick="copyLink()">Copy</button>
+      </div>
+      <div class="creator-note">
+        Share this link with friends. The word is encoded in the URL — don't open it yourself if you want to stay
+        surprised!
+      </div>
     </div>
-    <button class="btn-primary" id="btn-create" onclick="createPuzzle()" disabled>Generate link</button>
   </div>
 
-  <div class="share-box" id="share-box">
-    <h3>Your shareable link</h3>
-    <div class="link-row">
-      <div class="link-display" id="share-link-display"></div>
-      <button class="btn-copy" onclick="copyLink()">Copy</button>
-    </div>
-    <div class="creator-note">
-      Share this link with friends. The word is encoded in the URL — don't open it yourself if you want to stay surprised!
+  <!-- GAME VIEW -->
+  <div class="view" id="view-game">
+    <div class="game-meta" id="game-meta"></div>
+    <div class="board" id="board"></div>
+    <div class="invalid-msg" id="invalid-msg"></div>
+    <div class="keyboard" id="keyboard"></div>
+    <div class="end-screen" id="end-screen">
+      <div class="end-title" id="end-title"></div>
+      <div class="end-word" id="end-word"></div>
+      <div class="stats-row">
+        <div class="stat"><span class="stat-num" id="stat-guesses">—</span><span class="stat-label">Guesses</span></div>
+        <div class="stat"><span class="stat-num" id="stat-out-of">6</span><span class="stat-label">Max</span></div>
+      </div>
+      <div class="result-grid" id="result-grid"></div>
+      <button class="btn-share-result" onclick="shareResult()">Share result</button>
+      <button class="btn-play-again" onclick="resetGame()">Play again</button>
     </div>
   </div>
-</div>
 
-<!-- GAME VIEW -->
-<div class="view" id="view-game">
-  <div class="game-meta" id="game-meta"></div>
-  <div class="board" id="board"></div>
-  <div class="invalid-msg" id="invalid-msg"></div>
-  <div class="keyboard" id="keyboard"></div>
-  <div class="end-screen" id="end-screen">
-    <div class="end-title" id="end-title"></div>
-    <div class="end-word" id="end-word"></div>
-    <div class="stats-row">
-      <div class="stat"><span class="stat-num" id="stat-guesses">—</span><span class="stat-label">Guesses</span></div>
-      <div class="stat"><span class="stat-num" id="stat-out-of">6</span><span class="stat-label">Max</span></div>
-    </div>
-    <div class="result-grid" id="result-grid"></div>
-    <button class="btn-share-result" onclick="shareResult()">Share result</button>
-    <button class="btn-play-again" onclick="resetGame()">Play again</button>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-<script src="js/script.js"></script>
+  <div class="toast" id="toast"></div>
+  <footer>Developed by <a href="https://github.com/kaonashli">kaonashli</a>... and Claude 🙄</footer>
+  <script src="js/script.js"></script>
 </body>
+
 </html>
